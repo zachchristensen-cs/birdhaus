@@ -1,0 +1,27 @@
+{
+  "eventName": "birdhaus",
+  "addressLine1": "80 n beacon st #3",
+  "addressLine2": "allston, ma 02134",
+  "date": "saturday, december 6",
+  "time": "4pm",
+  "rsvpUrl": "https://partiful.com/e/g3Zg7fGHWsDZm8jQzMr2",
+  "rsvpDeadline": "please rsvp no later than\ntuesday, december 2",
+  "note": "this birdhaus is potluck style. no cover charge, but please bring a side!",
+  "instagramHandle": "dine.birdhaus",
+  "groups": [
+    {
+      "title": "to eat",
+      "items": [
+        { "name": "turkey", "detail": "gobble gobble" },
+        { "name": "sides", "detail": "stuffing, mashed potatoes" }
+      ]
+    },
+    {
+      "title": "to drink",
+      "items": [
+        { "name": "warm apple cider", "detail": "cider, cinnamon, whiskey (optional)" },
+        { "name": "wine", "detail": "assorted red wine" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-birdhaus: #dc4619;
+  --color-body-bg: #f1ede1;
+  --color-card-bg: #fdfcf8;
+  --color-brown: #5b3a2d;
+  --font-body: "Barlow Condensed", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-body-bg);
+  color: var(--color-brown);
+}
