@@ -25,17 +25,64 @@ interface Content {
   groups: Group[];
 }
 
+const ADMIN_PASSWORD = "zach";
+
 export default function AdminPage() {
+  const [authed, setAuthed] = useState(false);
+  const [password, setPassword] = useState("");
   const [content, setContent] = useState<Content | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [deploying, setDeploying] = useState(false);
 
   useEffect(() => {
-    fetch("/api/content")
+    const stored = sessionStorage.getItem("birdhaus-admin");
+    if (stored === ADMIN_PASSWORD) setAuthed(true);
+  }, []);
+
+  useEffect(() => {
+    if (!authed) return;
+    fetch("/api/content", {
+      headers: { "x-admin-password": ADMIN_PASSWORD },
+    })
       .then((r) => r.json())
       .then(setContent);
-  }, []);
+  }, [authed]);
+
+  if (!authed) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (password === ADMIN_PASSWORD) {
+              sessionStorage.setItem("birdhaus-admin", password);
+              setAuthed(true);
+            }
+          }}
+          className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-xs space-y-4"
+        >
+          <h1 className="text-lg font-semibold text-gray-900 text-center">
+            birdhaus admin
+          </h1>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="password"
+            className="w-full text-sm px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+            autoFocus
+          />
+          <button
+            type="submit"
+            className="w-full bg-gray-900 text-white text-sm px-5 py-2 rounded-lg hover:bg-gray-800 transition-colors"
+          >
+            Log in
+          </button>
+        </form>
+      </div>
+    );
+  }
 
   const save = useCallback(async () => {
     if (!content) return;
@@ -43,7 +90,7 @@ export default function AdminPage() {
     setSaved(false);
     await fetch("/api/content", {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-admin-password": ADMIN_PASSWORD },
       body: JSON.stringify(content),
     });
     setSaving(false);
@@ -56,7 +103,7 @@ export default function AdminPage() {
     setDeploying(true);
     await fetch("/api/content", {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-admin-password": ADMIN_PASSWORD },
       body: JSON.stringify(content),
     });
     const hookUrl = prompt(
