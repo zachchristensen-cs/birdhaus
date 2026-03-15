@@ -1,7 +1,38 @@
-import content from "@/content.json";
-import Image from "next/image";
+import fs from "fs";
+import path from "path";
+
+interface Item {
+  name: string;
+  detail?: string;
+}
+
+interface Group {
+  title: string;
+  items: Item[];
+}
+
+interface Content {
+  eventName: string;
+  addressLine1: string;
+  addressLine2: string;
+  date: string;
+  time: string;
+  rsvpUrl: string;
+  rsvpDeadline: string;
+  note: string;
+  instagramHandle: string;
+  groups: Group[];
+}
+
+function getContent(): Content {
+  const filePath = path.join(process.cwd(), "content.json");
+  const raw = fs.readFileSync(filePath, "utf-8");
+  return JSON.parse(raw);
+}
 
 export default function Home() {
+  const content = getContent();
+
   return (
     <div
       className="flex justify-center p-8"
@@ -14,13 +45,8 @@ export default function Home() {
     >
       <div className="flex flex-col items-center gap-6 w-full max-w-[500px] bg-card-bg p-8">
         {/* Logo */}
-        <Image
-          src="/logo.svg"
-          alt="birdhaus"
-          width={280}
-          height={70}
-          priority
-        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logo.svg" alt="birdhaus" width={280} height={70} />
 
         {/* Address */}
         <p className="text-center leading-5">
@@ -54,11 +80,11 @@ export default function Home() {
 
         {/* Menu Groups */}
         <div className="w-full">
-          {content.groups.map((group) => (
+          {content.groups.map((group: Group) => (
             <div key={group.title} className="mb-4">
               <p className="text-center mb-3">{group.title}</p>
               <div className="space-y-3">
-                {group.items.map((item) => (
+                {group.items.map((item: Item) => (
                   <div
                     key={item.name}
                     className="border border-brown p-3 flex flex-col items-center justify-center min-h-[72px]"
