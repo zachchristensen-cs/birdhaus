@@ -43,7 +43,7 @@ export default function Home() {
         backgroundRepeat: "repeat",
       }}
     >
-      <div className="flex flex-col items-center gap-6 w-full max-w-[500px] bg-card-bg p-8">
+      <div className="flex flex-col items-center gap-6 w-full max-w-[500px] bg-card-bg p-8" style={{ textWrap: "balance" }}>
         {/* Logo */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/logo.svg" alt="birdhaus" width={280} height={70} />
@@ -89,8 +89,8 @@ export default function Home() {
                     key={item.name}
                     className="border border-brown p-3 flex flex-col items-center justify-center min-h-[72px]"
                   >
-                    <p className="font-medium">{item.name}</p>
-                    {item.detail && <p>{item.detail}</p>}
+                    <p className="font-medium text-center">{item.name}</p>
+                    {item.detail && <p className="text-center">{item.detail}</p>}
                   </div>
                 ))}
               </div>
@@ -107,7 +107,7 @@ export default function Home() {
         </p>
 
         {/* Note */}
-        <p className="text-center text-birdhaus">{content.note}</p>
+        {content.note && <p className="text-center text-birdhaus">{content.note}</p>}
 
         {/* RSVP Button Bottom */}
         <a

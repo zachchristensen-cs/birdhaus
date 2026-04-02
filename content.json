@@ -2,25 +2,33 @@
   "eventName": "birdhaus",
   "addressLine1": "80 n beacon st #3",
   "addressLine2": "allston, ma 02134",
-  "date": "saturday, december 6",
-  "time": "4pm",
-  "rsvpUrl": "https://partiful.com/e/g3Zg7fGHWsDZm8jQzMr2",
-  "rsvpDeadline": "please rsvp no later than\ntuesday, december 2",
-  "note": "this birdhaus is potluck style. no cover charge, but please bring a side!",
+  "date": "saturday, may 9",
+  "time": "6pm",
+  "rsvpUrl": "https://partiful.com/e/tZ6DaCrEgus3JizfFWTq",
+  "rsvpDeadline": "please rsvp no later than\ntuesday, may 5",
+  "note": "",
   "instagramHandle": "dine.birdhaus",
   "groups": [
     {
+      "title": "to taste",
+      "items": [
+        { "name": "fried pickles", "detail": "buttermilk battered with ranch" },
+        { "name": "soft pretzels + beer cheese", "detail": "homemade pretzels with warm sharp cheddar beer cheese" },
+        { "name": "mixed snacks", "detail": "rosemary brown butter almonds, mixed nuts, and pretzels" }
+      ]
+    },
+    {
       "title": "to eat",
       "items": [
-        { "name": "turkey", "detail": "gobble gobble" },
-        { "name": "sides", "detail": "stuffing, mashed potatoes" }
+        { "name": "chopped cheese sliders", "detail": "seasoned beef and onions with melted american on brioche" },
+        { "name": "nashville hot chicken", "detail": "crispy brined thighs brushed with spicy chili oil" },
+        { "name": "cast iron mac & cheese", "detail": "sharp cheddar and gruyere with a broiled breadcrumb crust" }
       ]
     },
     {
       "title": "to drink",
       "items": [
-        { "name": "warm apple cider", "detail": "cider, cinnamon, whiskey (optional)" },
-        { "name": "wine", "detail": "assorted red wine" }
+        { "name": "ranch water", "detail": "tequila, lime, and topo chico" }
       ]
     }
   ]
